@@ -58,8 +58,8 @@ public class WASDController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pin"))
         {
-            score += 1;
-            Debug.Log(score);
+            score += 1; //add to score for each pin the ball touches. buggy because it allows multiple hits to the same pin
+            Debug.Log(score); 
         }
     }
 
@@ -68,9 +68,9 @@ public class WASDController : MonoBehaviour
         if (other.gameObject == KillForceCheck)
         {
             Debug.Log("GAME OVER");
-            moveForce = 0f;
-            resetGame = true;
-            TeleportBall();
+            moveForce = 0f; //so that the ball stops moving  if it hits the KillKeyCheck Collider
+            resetGame = true; //bool tells us the game needs to be reset
+            TeleportBall(); 
         }
         
     }
@@ -80,10 +80,10 @@ public class WASDController : MonoBehaviour
         if (resetGame == true)
         {
             Debug.Log("Your Final Score: " + score);
-            score = 0;
-            resetGame = false;
-            rb.position = new Vector3(0, 0, -6); //
-            moveForce = 10f;
+            score = 0; //resets the score
+            resetGame = false; //since the game reset, it goes back to being 
+            rb.position = new Vector3(0, 0, -6); //teleport the ball back to start
+            moveForce = 10f; //adjust moveforce so that the ball moves again
 
         }
     }
