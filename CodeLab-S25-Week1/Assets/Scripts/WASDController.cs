@@ -77,14 +77,14 @@ public class WASDController : MonoBehaviour
 
     private void TeleportBall()
     {
-        if (resetGame == true)
+        if (resetGame)
         {
             Debug.Log("Your Final Score: " + score);
             score = 0; //resets the score
             resetGame = false; //since the game reset, it goes back to being 
             rb.position = new Vector3(0, 0, -6); //teleport the ball back to start
             moveForce = 10f; //adjust moveforce so that the ball moves again
-
+            rb.linearVelocity = Vector3.zero;
         }
     }
 }
